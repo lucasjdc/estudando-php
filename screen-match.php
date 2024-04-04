@@ -14,12 +14,13 @@ for ($contador = 1; $contador < $argc; $contador++) {
 }
 
 $notaFilme = $somaDeNotas / $quantidadeDeNotas;
+$notaFilmeArredondado = round($notaFilme, 1);
 $planoPrime = true;
 
 $incluidoNoPlano = $planoPrime || $anoLancamento < 2020;
 
 echo "Nome do filme: $nomeFilme\n";
-echo "Nota do filme: $notaFilme\n";
+echo "Nota do filme: $notaFilmeArredondado\n";
 echo "Ano de lançamento: $anoLancamento\n";
 
 if ($anoLancamento > 2022) {
@@ -40,4 +41,11 @@ $genero = match($nomeFilme) {
 
 echo "O gênero do filme é: $genero\n";
 
-echo $argc;
+$filme = [
+    "Thor: Ragnarok",
+    2021,
+    7.8,
+    "super-herói",
+];
+
+var_dump($filme);
