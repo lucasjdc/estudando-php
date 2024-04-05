@@ -57,3 +57,10 @@ $filme = [
 
 echo $filme["ano"];
 
+// Função usada em ambiente de desenvolvimento
+var_dump($notas);
+
+sort($notas);
+var_dump($notas);
+$menorNota = min($notas);
+echo $menorNota;
