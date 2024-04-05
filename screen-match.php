@@ -10,6 +10,10 @@ function exibeMensagemLancamento($ano) {
     }
 }
 
+function incluidoNoPlano($planoPrime, $anoLancamento) {
+    return $planoPrime || $anoLancamento < 2020;
+}
+
 echo "Bem-Vindo(a) ao screen match!\n";
 
 $nomeFilme = "Top Gun - Maverick";
@@ -23,12 +27,11 @@ for ($contador = 1; $contador < $argc; $contador++) {
     $notas[] += (float) $argv[$contador];
 }
 
-// A função `array_sum()` é usada para calcular a soma de todas as notas armazenadas no array `$notas`.
 $notaFilme = array_sum($notas) / $quantidadeDeNotas;
 $notaFilmeArredondado = round($notaFilme, 1);
 $planoPrime = true;
 
-$incluidoNoPlano = $planoPrime || $anoLancamento < 2020;
+$incluidoNoPlano = incluidoNoPlano($planoPrime, $anoLancamento);
 
 echo "Nome do filme: $nomeFilme\n";
 echo "Nota do filme: $notaFilmeArredondado\n";
