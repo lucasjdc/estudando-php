@@ -1,5 +1,15 @@
 <?php
 
+function exibeMensagemLancamento($ano) {
+    if ($ano > 2022) {
+        echo "Esse filme é um lançamento\n";
+    } elseif ($ano > 2020 && $ano <= 2022) {
+        echo "Esse filme ainda é novo\n";
+    }else {
+        echo "Esse filme não é um lançamento\n";
+    }
+}
+
 echo "Bem-Vindo(a) ao screen match!\n";
 
 $nomeFilme = "Top Gun - Maverick";
@@ -13,6 +23,7 @@ for ($contador = 1; $contador < $argc; $contador++) {
     $notas[] += (float) $argv[$contador];
 }
 
+// A função `array_sum()` é usada para calcular a soma de todas as notas armazenadas no array `$notas`.
 $notaFilme = array_sum($notas) / $quantidadeDeNotas;
 $notaFilmeArredondado = round($notaFilme, 1);
 $planoPrime = true;
@@ -23,14 +34,7 @@ echo "Nome do filme: $nomeFilme\n";
 echo "Nota do filme: $notaFilmeArredondado\n";
 echo "Ano de lançamento: $anoLancamento\n";
 
-if ($anoLancamento > 2022) {
-    echo "Esse filme é um lançamento\n";
-} elseif ($anoLancamento > 2020 && $anoLancamento <= 2022) {
-    echo "Esse filme ainda é novo\n";
-}else {
-    echo "Esse filme não é um lançamento\n";
-}
-
+exibeMensagemLancamento($anoLancamento);
 
 $genero = match($nomeFilme) {
     "Top Gun - Maverick" => "ação",
