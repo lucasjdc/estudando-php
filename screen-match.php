@@ -1,6 +1,6 @@
 <?php
 
-function exibeMensagemLancamento($ano) {
+function exibeMensagemLancamento(int $ano): void {
     if ($ano > 2022) {
         echo "Esse filme é um lançamento\n";
     } elseif ($ano > 2020 && $ano <= 2022) {
@@ -10,7 +10,7 @@ function exibeMensagemLancamento($ano) {
     }
 }
 
-function incluidoNoPlano($planoPrime, $anoLancamento) {
+function incluidoNoPlano(bool $planoPrime, int $anoLancamento): bool {
     return $planoPrime || $anoLancamento < 2020;
 }
 
@@ -24,7 +24,7 @@ $quantidadeDeNotas = $argc - 1;
 $notas = [];
 
 for ($contador = 1; $contador < $argc; $contador++) {
-    $notas[] += (float) $argv[$contador];
+    $notas[] = (float) $argv[$contador];
 }
 
 $notaFilme = array_sum($notas) / $quantidadeDeNotas;
@@ -56,3 +56,4 @@ $filme = [
 ];
 
 echo $filme["ano"];
+
