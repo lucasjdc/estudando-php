@@ -29,19 +29,19 @@ exibeMensagemLancamento($anoLancamento);
 
 $genero = match($nomeFilme) {
     "Top Gun - Maverick" => "ação",
-    "Thor: Ragnarok" => "super-herói",
+    "Thor: Ragnarok" => "aventura",
     "Se beber não case" => "comédia",
     default => "gênero desconhecido",
 };
 
 echo "O gênero do filme é: $genero\n";
 
-$filme = [
-    "nome" => "Thor: Ragnarok",
-    "ano" => 2021,
-    "nota" => 7.8,
-    "genero" => "super-herói",
-];
+$filme = criaFilme(
+    nome: "Thor: Ragnarok",
+    anoLancamento: 2017,
+    nota: 7.8, 
+    genero: "aventura"
+);
 
 echo "\n\n";
 
@@ -49,3 +49,7 @@ var_dump($filme['nome']);
 $posicaoDoisPontos = strpos($filme['nome'], ':');
 var_dump($posicaoDoisPontos);
 var_dump(substr($filme['nome'], 0, $posicaoDoisPontos));
+
+$filmeComoStringJson = json_encode($filme);
+
+file_put_contents(__DIR__ . '/filme.json', $filmeComoStringJson);
