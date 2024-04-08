@@ -9,6 +9,7 @@ class Conta
     public function __construct(string $cpfTitular, string $nomeTitular) 
     {
         $this->cpfTitular = $cpfTitular;
+        $this->validaNomeTitular($nomeTitular);        
         $this->nomeTitular = $nomeTitular;
         $this->saldo = 0;
     }
@@ -51,5 +52,13 @@ class Conta
 
     public function recuperarNomeTitular(): string {
         return $this->nomeTitular;
+    }
+
+    private function validaNomeTitular(string $nomeTitular)
+    {
+        if (strlen($nomeTitular) < 5) {
+            echo "Nome precisa ter pelo menos 5 caracteres\n";
+            exit();
+        }
     }
 }
