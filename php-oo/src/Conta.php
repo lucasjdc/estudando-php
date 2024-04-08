@@ -4,7 +4,14 @@ class Conta
 {
     private string $cpfTitular;
     private string $nomeTitular;
-    private float $saldo;    
+    private float $saldo;
+
+    public function __construct(string $cpfTitular, string $nomeTitular) 
+    {
+        $this->cpfTitular = $cpfTitular;
+        $this->nomeTitular = $nomeTitular;
+        $this->saldo = 0;
+    }
     
     public function sacar(float $valorASacar): void {
         if ($valorASacar > $this->saldo) {
@@ -36,18 +43,10 @@ class Conta
 
     public function recuperarSaldo(): float {
         return $this->saldo;
-    }
-
-    public function defineCpfTitular(string $cpf): void {
-        $this->cpfTitular = $cpf;
-    }
+    }    
 
     public function recuperarCpfTitular(): string {
         return $this->cpfTitular;
-    }
-
-    public function defineNomeTitular(string $nome): void {
-        $this->nomeTitular = $nome;
     }
 
     public function recuperarNomeTitular(): string {

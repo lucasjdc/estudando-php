@@ -2,11 +2,10 @@
 
 require_once 'src/Conta.php';
 
-$primeiraConta = new Conta();
-var_dump($primeiraConta);
-
-$primeiraConta->defineCpfTitular('111.111.111-11');
-$primeiraConta->defineNomeTitular('Lucas José Pereira da Costa');
+$primeiraConta = new Conta("111.111.111-11", "Nome do títular");
 $primeiraConta->depositar(1.99);
 
-var_dump($primeiraConta);
+
+echo "Nome: " . $primeiraConta->recuperarNomeTitular() . PHP_EOL;
+echo "CPF: " . $primeiraConta->recuperarCpfTitular() . PHP_EOL;
+echo "Saldo: R$ " . $primeiraConta->recuperarSaldo() . PHP_EOL;
