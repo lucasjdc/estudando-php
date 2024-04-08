@@ -9,3 +9,4 @@ echo "Nome: " . $primeiraConta->recuperarNomeTitular() . PHP_EOL;
 echo "CPF: " . $primeiraConta->recuperarCpfTitular() . PHP_EOL;
 echo "Saldo: R$ " . $primeiraConta->recuperarSaldo() . PHP_EOL;
 
+echo Conta::recuperarNumeroDeContas() . PHP_EOL;
