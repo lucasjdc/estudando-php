@@ -2,18 +2,14 @@
 
 class Conta 
 {
-    private string $cpfTitular;
-    private string $nomeTitular;
+    private Titular $titular;
     private float $saldo;
     private static $numeroDeContas = 0;
 
-    public function __construct(string $cpfTitular, string $nomeTitular) 
+    public function __construct(Titular $titular) 
     {
-        $this->cpfTitular = $cpfTitular;
-        $this->validaNomeTitular($nomeTitular);        
-        $this->nomeTitular = $nomeTitular;
+        $this->titular = $titular;
         $this->saldo = 0;
-
         self::$numeroDeContas++;
     }
 
@@ -24,7 +20,7 @@ class Conta
         }
     }
     
-    public function sacar(float $valorASacar): void {
+    public function saca(float $valorASacar): void {
         if ($valorASacar > $this->saldo) {
             echo "Saldo indisponível\n";
             return;
@@ -33,7 +29,7 @@ class Conta
         $this->saldo -= $valorASacar;        
     }
 
-    public function depositar(float $valorADepositar) {
+    public function deposita(float $valorADepositar) {
         if ($valorADepositar <0) {
             echo "Valor precisa ser positivo\n";
             return;
@@ -42,37 +38,32 @@ class Conta
         $this->saldo += $valorADepositar;
     }
 
-    public function transferir(float $valorATransferir, Conta $contaDestino): void {
+    public function transferir(float $valorATransferir, Conta $contaDestino): void
+    {
         if ($valorATransferir > $this->saldo) {
             echo "Saldo indisponível\n";
             return;
         } 
             
-        $this->sacar($valorATransferir);
-        $contaDestino->depositar($valorATransferir);        
+        $this->saca($valorATransferir);
+        $contaDestino->deposita($valorATransferir);        
     }
 
-    public function recuperarSaldo(): float {
+    public function recuperaSaldo(): float {
         return $this->saldo;
-    }    
-
-    public function recuperarCpfTitular(): string {
-        return $this->cpfTitular;
     }
 
-    public function recuperarNomeTitular(): string {
-        return $this->nomeTitular;
-    }
-
-    private function validaNomeTitular(string $nomeTitular)
+    public function recuperaNomeTitular(): string 
     {
-        if (strlen($nomeTitular) < 5) {
-            echo "Nome precisa ter pelo menos 5 caracteres\n";
-            exit();
-        }
+        return $this->titular->recuperaNome();
     }
 
-    public static  function recuperarNumeroDeContas(): int
+    public function recuperaCpfTitular(): string
+    {
+        return $this->titular->recuperaCpf();
+    }
+
+    public static  function recuperaNumeroDeContas(): int
     {
         return self::$numeroDeContas;
     }

@@ -1,16 +1,19 @@
 <?php
 
 require_once 'src/Conta.php';
+require_once 'src/Titular.php';
+require_once 'src/Cpf.php';
 
-$primeiraConta = new Conta("111.111.111-11", "Fulano");
-$primeiraConta->depositar(1.99);
-$segundaConta = new Conta("222.222.222-22", "Outro Fulano");
-unset($segundaConta);
+$cpf = new Cpf("123.456.789-00");
+$nome = "Nome do Cliente";
 
-new Conta("333.222.222-22", "Nome do titular");
+$primeiraConta = new Conta(new Titular($cpf, $nome));
+$primeiraConta->deposita(500);
+$primeiraConta->saca(300);
 
-echo "Nome: " . $primeiraConta->recuperarNomeTitular() . PHP_EOL;
-echo "CPF: " . $primeiraConta->recuperarCpfTitular() . PHP_EOL;
-echo "Saldo: R$ " . $primeiraConta->recuperarSaldo() . PHP_EOL;
+echo $primeiraConta->recuperaNomeTitular() . PHP_EOL;
+echo $primeiraConta->recuperaCpfTitular() . PHP_EOL;
+echo $primeiraConta->recuperaSaldo() . PHP_EOL;
 
-echo Conta::recuperarNumeroDeContas() . PHP_EOL;
+echo "\n\n";
+var_dump($primeiraConta);
