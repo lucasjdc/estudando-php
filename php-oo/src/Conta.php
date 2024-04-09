@@ -46,7 +46,7 @@ class Conta
         } 
             
         $this->saca($valorATransferir);
-        $contaDestino->deposita($valorATransferir);        
+        $contaDestino->deposita($valorATransferir);
     }
 
     public function recuperaSaldo(): float {
