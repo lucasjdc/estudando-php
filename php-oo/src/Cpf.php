@@ -9,7 +9,8 @@ class Cpf
         $this->numero = $numero;
     }
 
-    public function __toString() {
+    public function recuperaNumero()
+    {
         return $this->numero;
     }
 }
